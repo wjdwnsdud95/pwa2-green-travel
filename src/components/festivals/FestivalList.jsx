@@ -7,26 +7,32 @@ import { dateFormatter } from '../../utils/dateFormatter.js';
 
 function FestivalList() {
   const dispatch = useDispatch();
-
   const festibalList = useSelector(state => state.festival.list);
-  const page = useSelector(state => state.festival.page);
   const scrollEventFlg = useSelector(state => state.festival.scrollEventFlg);
 
-  // 스크롤 이벤트용 useEffect
   useEffect(() => {
-    dispatch(festivalIndex(1));
-  }, []);
+    // ***[숙제]***
+    // 로컬 스토리지에 저장된 날짜를 획득
+    //  저장된 날짜 없으면 로컬 스토리지에 현재 날짜 저장
+    //  저장된 날짜 있으면 아래 처리 속행
+    //    오늘 날짜랑 비교
+    //      날짜가 과거면 로컬 스토리지 및 스테이트 초기화
+    //      아직 과거가 아니면 처리 속행
 
-  useEffect(() => {
     window.addEventListener('scroll', addNextPage);
 
+    if(festibalList.length === 0) {
+      dispatch(festivalIndex());
+    }
+  
     return () => {
       window.removeEventListener('scroll', addNextPage);
     }
-  }, [page, scrollEventFlg]);
+  }, []);
 
   // 다음 페이지 가져오기
   function addNextPage() {
+
     // 스크롤 관련 처리
     const docHeight = document.documentElement.scrollHeight; // 문서의 Y축 총 길이
     const winHeight = window.innerHeight; // 윈도우의 Y축 총 길이
@@ -35,7 +41,7 @@ function FestivalList() {
 
     if(viewHeight === nowHeight && scrollEventFlg) {
       dispatch(setScrollEventFlg(false));
-      dispatch(festivalIndex(page + 1));
+      dispatch(festivalIndex());
     }
 
   }
