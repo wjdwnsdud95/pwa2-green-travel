@@ -4,21 +4,17 @@ import { useEffect } from 'react';
 import { setScrollEventFlg } from '../../store/slices/festivalSlice.js';
 import { festivalIndex } from '../../store/thunks/festivalThunk.js';
 import { dateFormatter } from '../../utils/dateFormatter.js';
+import { useNavigate } from 'react-router-dom';
+// import { setFestivalInfo } from '../../store/slices/festivalShowSlice.js';
 
 function FestivalList() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const festibalList = useSelector(state => state.festival.list);
   const scrollEventFlg = useSelector(state => state.festival.scrollEventFlg);
 
   useEffect(() => {
-    // ***[숙제]***
-    // 로컬 스토리지에 저장된 날짜를 획득
-    //  저장된 날짜 없으면 로컬 스토리지에 현재 날짜 저장
-    //  저장된 날짜 있으면 아래 처리 속행
-    //    오늘 날짜랑 비교
-    //      날짜가 과거면 로컬 스토리지 및 스테이트 초기화
-    //      아직 과거가 아니면 처리 속행
-
     window.addEventListener('scroll', addNextPage);
 
     if(festibalList.length === 0) {
@@ -46,6 +42,12 @@ function FestivalList() {
 
   }
 
+  // 상세 페이지로 이동
+  function redirectShow(item) {
+    // dispatch(setFestivalInfo(item));
+    navigate(`/festivals/${item.contentid}`);
+  }
+
   return (
     <>
       <div className="container">
@@ -54,16 +56,16 @@ function FestivalList() {
           // festibalList && festibalList.map(item => {
           festibalList.map(item => {
             return (
-            <div className="card" key={item.contentid + item.createdtime}>
+            <div className="card" onClick={() => { redirectShow(item) }} key={item.contentid + item.createdtime}>
               <div className="card-img" style={{backgroundImage: `url('${item.firstimage}')`}}></div>
               <p className="card-title">{item.title}</p>
-              <p className="card-period">{dateFormatter.WithHypenYMD(item.eventstartdate)} ~ {dateFormatter.WithHypenYMD(item.eventenddate)}</p>
+              <p className="card-period">{dateFormatter.withHypenYMD(item.eventstartdate)} ~ {dateFormatter.withHypenYMD(item.eventenddate)}</p>
             </div>
             );
           })
         }
       </div>
-        <button type="button" className="card-NextPage-Button" onClick={addNextPage}>더 보기</button>
+        {/* <button type="button" className="card-NextPage-Button" onClick={addNextPage}>더 보기</button> */}
     </>
   )
 }
