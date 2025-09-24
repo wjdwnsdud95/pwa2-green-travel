@@ -1,6 +1,16 @@
-.title-Img {
+.main-title-Img {
   display: block;
   margin: 0 auto;
   width: 100%;
   max-width: 500px;
+}
+
+.main-sub-title {
+  font-size: 16px;
+  color: #c5d2e0; /* 흰색보다 눈이 편안한 연한 회색 */
+  text-align: center;
+}
+
+.title-color {
+  color: red;
 }

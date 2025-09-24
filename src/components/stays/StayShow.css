@@ -1,4 +1,4 @@
-.festivel-show-container {
+.stay-show-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,10 +6,10 @@
   color: #fff;
   padding: 40px 20px;
   max-width: 800px; /* PC 화면에서 너무 넓어지는 것을 방지 */
-  margin: 0 auto;   /* 컨테이너를 페이지 중앙에 배치 */
+  margin: 0 auto; /* 컨테이너를 페이지 중앙에 배치 */
 }
 
-.festivel-show-button {
+.stay-show-button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -26,18 +26,18 @@
   text-decoration: none; /* a 태그일 경우 밑줄 제거 */
 }
 
-.festivel-show-button:hover {
+.stay-show-button:hover {
   background-color: #e0e0e0;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
-.festivel-show-button:active {
+.stay-show-button:active {
   background-color: #d5d5d5;
   transform: translateY(0);
 }
 
-.festivel-show-title {
+.stay-show-title {
   font-size: 36px; /* 화면 크기를 고려해 살짝 조절 */
   font-weight: 700; /* 900은 너무 굵을 수 있어 700으로 조정 */
   margin-top: 10px;
@@ -45,23 +45,23 @@
   line-height: 1.4;
 }
 
-.festivel-show-period {
+.stay-show-tel {
   font-size: 17px;
   color: #c5d2e0; /* 흰색보다 눈이 편안한 연한 회색 */
   text-align: center;
   line-height: 1.6;
 }
 
-.festivel-show-img {
+.stay-show-addr {
+  font-size: 17px;
+  color: #c5d2e0; /* 흰색보다 눈이 편안한 연한 회색 */
+  text-align: center;
+  line-height: 1.6;
+}
+
+.stay-show-img {
   width: 100%;
   border-radius: 16px; /* 이미지 모서리를 둥글게 처리 */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* 이미지에 입체감을 주는 그림자 */
   margin-top: 15px; /* 제목/정보와 이미지 사이 간격 */
-}
-
-.festivel-show-addr {
-  font-size: 17px;
-  color: #c5d2e0; /* 흰색보다 눈이 편안한 연한 회색 */
-  text-align: center;
-  line-height: 1.6;
 }

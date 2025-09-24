@@ -1,4 +1,4 @@
-.festivel-sub-title {
+.stay-sub-title {
   color: white;
   font-size: 32px;
   font-weight: bold;
@@ -6,14 +6,14 @@
   margin-bottom: 40px; /* 카드 목록과 간격을 준다. */
 }
 
-.festivel-container {
+.stay-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   padding: 20px;
 }
 
-.festivel-card {
+.stay-card {
   padding: 10px;
   background-color: #fff;
   border-radius: 15px; /* 모서리를 더 둥글게 */
@@ -26,14 +26,14 @@
   text-align: center;
 }
 
-.festivel-card-img {
+.stay-card-img {
   padding-top: 70%; /* 이미지 비율 (필요에 따라 조절) */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.festivel-card-title {
+.stay-card-title {
   min-height: 3.2em; /* 폰트 크기의 3.2배 높이를 최소 높이로 지정 (약 2줄 분량) */
   font-size: 22px;
   font-weight: 600; /* 제목을 살짝 두껍게 */
@@ -41,13 +41,13 @@
   margin-bottom: 10px;
 }
 
-.festivel-card-period {
+.stay-crad-address {
   font-size: 14px;
   color: #7f8c8d; /* 제목보다 연한 색상으로 정보의 중요도 구분 */
   margin-bottom: 25px;
 }
 
-.festivel-card-NextPage-Button {
+.stay-card-NextPage-Button {
   display: block;
   margin: 0 auto;
   margin-top: auto;

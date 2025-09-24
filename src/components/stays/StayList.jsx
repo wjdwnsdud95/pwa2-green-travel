@@ -1,24 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
-import './FestivalList.css';
+import './StayList.css';
 import { useEffect } from 'react';
-import { setScrollEventFlg } from '../../store/slices/festivalSlice.js';
-import { festivalIndex } from '../../store/thunks/festivalThunk.js';
-import { dateFormatter } from '../../utils/dateFormatter.js';
+import { setScrollEventFlg } from '../../store/slices/staySlice.js';
+import { stayIndex } from '../../store/thunks/stayThunk.js';
 import { useNavigate } from 'react-router-dom';
-// import { setFestivalInfo } from '../../store/slices/festivalShowSlice.js';
 
-function FestivalList() {
+function StayList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const festibalList = useSelector(state => state.festival.list);
-  const scrollEventFlg = useSelector(state => state.festival.scrollEventFlg);
+  const stayList = useSelector(state => state.stay.list);
+  const scrollEventFlg = useSelector(state => state.stay.scrollEventFlg);
 
   useEffect(() => {
     window.addEventListener('scroll', addNextPage);
 
-    if(festibalList.length === 0) {
-      dispatch(festivalIndex());
+    if(stayList.length === 0) {
+      dispatch(stayIndex());
     }
   
     return () => {
@@ -37,7 +35,7 @@ function FestivalList() {
 
     if(viewHeight === nowHeight && scrollEventFlg) {
       dispatch(setScrollEventFlg(false));
-      dispatch(festivalIndex());
+      dispatch(stayIndex());
     }
 
   }
@@ -45,22 +43,22 @@ function FestivalList() {
   // 상세 페이지로 이동
   function redirectShow(item) {
     // dispatch(setFestivalInfo(item));
-    navigate(`/festivals/${item.contentid}`);
+    navigate(`/stays/${item.contentid}`);
   }
 
   return (
     <>
-      <p className='festivel-sub-title'>-축제 정보 리스트-</p>
-      <div className="festivel-container">
+      <p className='stay-sub-title'>-숙박 정보 리스트-</p>
+      <div className="stay-container">
         {
           // 초기값을 무엇을 주냐에 따라 아래의 코드 셋팅이 달라질 수 있다.
           // festibalList && festibalList.map(item => {
-          festibalList.map(item => {
+          stayList.map(item => {
             return (
-            <div className="festivel-card" onClick={() => { redirectShow(item) }} key={item.contentid + item.createdtime}>
-              <div className="festivel-card-img" style={{backgroundImage: `url('${item.firstimage}')`}}></div>
-              <p className="festivel-card-title">{item.title}</p>
-              <p className="festivel-card-period">{dateFormatter.withHypenYMD(item.eventstartdate)} ~ {dateFormatter.withHypenYMD(item.eventenddate)}</p>
+            <div className="stay-card" onClick={() => { redirectShow(item) }} key={item.contentid + item.createdtime}>
+              <div className="stay-card-img" style={{backgroundImage: `url('${item.firstimage}')`}}></div>
+              <p className="stay-card-title">{item.title}</p>
+              <p className="stay-crad-address">{item.addr1}</p>
             </div>
             );
           })
@@ -71,4 +69,4 @@ function FestivalList() {
   )
 }
 
-export default FestivalList;
+export default StayList;
