@@ -4,7 +4,19 @@
   box-sizing: border-box;
 }
 
+/* CSS에서의 변수 선언 */
+/* 가상 선택자(전체 선택자 처럼 html 전역으로 접근할 수 있음) */
+:root {
+  /* 변수명은 무조건 `--변수명`로 시작 */
+  --personal-color-1: #000;
+  --personal-color-2: #fff;
+  --btn-big-width: 300px;
+  --btn-middle-width: 150px;
+}
+
 body {
+  /* 변수 사용: var(변수명) 호출 */
+  /* background-color: var(--personal-color-1); */
   background-color: #333d51;
 }
 
